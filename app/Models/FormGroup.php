@@ -18,4 +18,9 @@ class FormGroup extends Model
     {
         return $this->hasMany(FormField::class, 'id_form', 'id_form'); // Relasi ke tabel fields
     }
+
+    public function formSubmissions()
+{
+    return $this->hasMany(FormSubmission::class, 'form_group_id', 'id_form');
+}
 }

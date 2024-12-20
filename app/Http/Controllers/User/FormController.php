@@ -39,6 +39,7 @@ class FormController extends Controller
                     'submission_id' => $submissionId,
                     'user_id' => auth()->id(),
                     'status' => 'pending',
+                    'form_group_id' => $request->form_group_id, // Simpan form group ID
                 ]);
 
                 // dd($filePath);
@@ -50,6 +51,7 @@ class FormController extends Controller
                     'submission_id' => $submissionId,
                     'user_id' => auth()->id(),
                     'status' => 'pending',
+                    'form_group_id' => $request->form_group_id, // Simpan form group ID
                 ]);
             }
         }

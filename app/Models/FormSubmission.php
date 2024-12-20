@@ -12,12 +12,18 @@ class FormSubmission extends Model
         'submission_id',
         'user_id',
         'status',
-        'file_path'
+        'file_path',
+        'form_group_id', // Tambahkan kolom baru
     ];
 
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    public function formGroup()
+    {
+        return $this->belongsTo(FormGroup::class, 'form_group_id', 'id_form');
     }
 }
 

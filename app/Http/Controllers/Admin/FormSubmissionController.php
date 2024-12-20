@@ -5,19 +5,43 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\FormSubmission;
+use App\Models\FormGroup;
+use Illuminate\Support\Facades\DB;
 
 class FormSubmissionController extends Controller
 {
-    public function verifySubmissions()
+    public function index()
     {
-        // Ambil semua data form submissions dan kelompokkan berdasarkan submission_id
-        $allSubmissions = FormSubmission::with('user') // Relasi opsional ke tabel users
+        // Ambil semua form groups
+        $formGroups = FormGroup::all();
+
+        // Hitung total form submissions per group berdasarkan kondisi id_user dan submission_id
+        foreach ($formGroups as $group) {
+            $group->submission_count = DB::table('form_submissions')
+                ->where('form_group_id', $group->id_form) // Hubungan ke grup
+                ->select('submission_id') // Kelompokkan berdasarkan submission_id
+                ->whereNotNull('user_id') // Hanya jika id_user ada
+                ->distinct() // Hitung hanya submission_id unik
+                ->count('submission_id');
+        }
+
+        return view('admin.form_submission.index', compact('formGroups'));
+    }
+    
+    public function submissionsByGroup($formGroupId)
+    {
+        // Ambil form group berdasarkan ID
+        $formGroup = FormGroup::findOrFail($formGroupId);
+
+        // Ambil semua submissions berdasarkan form group ID
+        $submissions = FormSubmission::where('form_group_id', $formGroupId)
+            ->with('user') // Relasi opsional ke user
             ->get()
             ->groupBy('submission_id');
 
-        $status = $submission->status ?? 'pending'; // Jika belum ada, default 'pending'
+        $status = $submission->status ?? 'pending'; 
 
-        return view('admin.form_submission.index', compact('allSubmissions', 'status'));
+        return view('admin.form_submission.by_group', compact('formGroup', 'submissions', 'status'));
     }
 
     public function updateStatus(Request $request, $submissionId)
@@ -32,6 +56,16 @@ class FormSubmissionController extends Controller
             ->update(['status' => $request->status]);
 
         return redirect()->route('admin.form_submission.index')->with('success', 'Status berhasil diperbarui.');
+    }
+
+    public function showSubmissionsByGroup($formGroupId)
+    {
+        // Ambil form group beserta submissionsnya
+        $formGroup = FormGroup::with(['submissions' => function ($query) {
+            $query->groupBy('submission_id');
+        }])->findOrFail($formGroupId);
+
+        return view('admin.form_submission.by_group', compact('formGroup'));
     }
 
 }

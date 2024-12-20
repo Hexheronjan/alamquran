@@ -12,7 +12,7 @@
                 <div class="p-6 text-gray-900">
                     <form method="POST" action="{{ route('user.form.submit') }}" class="space-y-6" enctype="multipart/form-data">
                         @csrf
-
+                        <input type="hidden" name="form_group_id" value="{{ $form->id_form }}">
                         @foreach ($form->fields as $field)
                         <div class="flex flex-col">
                             <!-- Label -->

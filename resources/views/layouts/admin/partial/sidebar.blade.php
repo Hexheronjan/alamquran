@@ -28,9 +28,14 @@
         <li class="sidebar-item">
           <a class="sidebar-link gap-3 py-2 px-3  rounded-md w-full flex items-center hover:text-blue-600 hover:bg-blue-500" href="{{ route('admin.form_groups.index')}}"
            >
-            <i class="ti ti-file-description  text-xl"></i> <span>Forms</span>
+            <i class="ti ti-file-description  text-xl"></i> <span>Data Formulir</span>
           </a>
         </li> 
+
+        <li class="text-xs font-bold mb-4 mt-8">
+          <i class="ti ti-dots nav-small-cap-icon text-lg hidden text-center"></i>
+          <span>KELOLA DATA</span>
+        </li>
 
         <li class="sidebar-item">
           <a class="sidebar-link gap-3 py-2 px-3  rounded-md w-full flex items-center hover:text-blue-600 hover:bg-blue-500" href="{{ route('admin.form_submission.index')}}"
@@ -38,18 +43,6 @@
             <i class="ti ti-file-description  text-xl"></i> <span>Daftar Pendaftaran</span>
           </a>
         </li> 
- 
-        <li class="text-xs font-bold mb-4 mt-8">
-          <i class="ti ti-dots nav-small-cap-icon text-lg hidden text-center"></i>
-          <span>AUTH</span>
-        </li>
-
-        <li class="sidebar-item">
-          <a class="sidebar-link gap-3 py-2 px-3  rounded-md w-full flex items-center hover:text-blue-600 hover:bg-blue-500" href="@@webRoot/pages/authentication-login.html"
-           >
-            <i class="ti ti-login  text-xl"></i> <span>Login</span>
-          </a>
-        </li>
 
         <li class="sidebar-item">
           <a class="sidebar-link gap-3 py-2 px-3  rounded-md w-full flex items-center hover:text-blue-600 hover:bg-blue-500" href="@@webRoot/pages/authentication-register.html"

@@ -63,7 +63,8 @@ Route::middleware('auth:admin')->group(function () {
     Route::put('admin/forms/{form_id}/fields/{field_id}', [AdminFormFieldController::class, 'update'])->name('admin.form_fields.update');
     Route::delete('admin/forms/{form_id}/fields/{field_id}', [AdminFormFieldController::class, 'destroy'])->name('admin.form_fields.destroy');
 
-    Route::get('/admin/form_submission', [AdminFormSubmissionController::class, 'verifySubmissions'])->name('admin.form_submission.index');
+    Route::get('/admin/form_submission', [AdminFormSubmissionController::class, 'index'])->name('admin.form_submission.index');
+    Route::get('/admin/form_submission/group/{id}', [AdminFormSubmissionController::class, 'submissionsByGroup'])->name('admin.form_submission.group');
     Route::put('/admin/form_submission/update-status/{submissionId}', [AdminFormSubmissionController::class, 'updateStatus'])->name('admin.form_submission.updateStatus');
 
 
