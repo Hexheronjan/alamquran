@@ -1,0 +1,67 @@
+<?php
+
+namespace App\Http\Controllers\Admin;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Models\School;
+
+class SchoolController extends Controller
+{
+   public function index()
+   {
+        $title = "Data Sekolah";
+        $schools = School::All();
+
+        return view('admin.schools.index', compact('schools', 'title'));
+   }
+
+   public function create()
+   {
+        $title = "Tambah Data Sekolah";
+
+        return view('admin.schools.create', compact('title'));
+   }
+
+   public function store(Request $request)
+   {
+        $request->validate([
+            'name' => 'required',
+            'address' => 'required',
+            'phone' => 'required',
+            'email' => 'nullable|email',
+            'principal_name' => 'nullable|string',
+        ]);
+
+        School::create($request->all());
+
+        return redirect()->route('admin.schools.index');
+   }
+
+   public function edit(Schools $schools)
+   {   
+        $title = "Halaman Edit Data Sekolah"; 
+        return view('admin.schools.edit', compact('schools'));
+   }
+
+   public function update(Request $request, School $school)
+   {
+        $request->validate([
+            'name' => 'nullable',
+            'address' => 'nullable',
+            'phone' => 'nullable',
+            'email' => 'nullable|email',
+            'principal_name' => 'nullable|string',
+        ]);
+
+        School::update($request->all());
+
+        return redirect()->route('admin.schools.index');
+   }
+
+   public function destroy(Schools $schools)
+   {
+        $school->delete();
+        return redirect()->route('admin.schools.index');
+   }
+}

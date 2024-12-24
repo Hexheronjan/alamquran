@@ -18,6 +18,7 @@ use App\Http\Controllers\Admin\AdminController as AdminDashboardController;
 use App\Http\Controllers\Admin\FormFieldController as AdminFormFieldController;
 use App\Http\Controllers\Admin\FormGroupController as AdminFormGroupController;
 use App\Http\Controllers\Admin\FormSubmissionController as AdminFormSubmissionController;
+use App\Http\Controllers\Admin\SchoolController as AdminSchoolController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -66,6 +67,13 @@ Route::middleware('auth:admin')->group(function () {
     Route::get('/admin/form_submission', [AdminFormSubmissionController::class, 'index'])->name('admin.form_submission.index');
     Route::get('/admin/form_submission/group/{id}', [AdminFormSubmissionController::class, 'submissionsByGroup'])->name('admin.form_submission.group');
     Route::put('/admin/form_submission/update-status/{submissionId}', [AdminFormSubmissionController::class, 'updateStatus'])->name('admin.form_submission.updateStatus');
+
+    Route::get('/admin/schools/', [AdminSchoolController::class, 'index'])->name('admin.schools.index');
+    Route::get('/admin/schools/create', [AdminSchoolController::class, 'create'])->name('admin.schools.create');
+    Route::post('/admin/schools/', [AdminSchoolController::class, 'store'])->name('admin.schools.store');
+    Route::get('/admin/schools/{schools}/edit', [AdminSchoolController::class, 'edit'])->name('admin.schools.edit');
+    Route::put('/admin/schools/{schools}', [AdminSchoolController::class, 'update'])->name('admin.schools.update');
+    Route::delete('/admin/schools/{schools}', [AdminSchoolController::class, 'destroy'])->name('admin.schools.destroy');
 
 
     // Route::get('/admin/form-fields', [AdminFormFieldController::class, 'index'])->name('admin.form_fields.index');
