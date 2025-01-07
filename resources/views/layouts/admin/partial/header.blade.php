@@ -2,7 +2,7 @@
 
 <!-- ========== HEADER ========== -->
 
-    <nav class=" w-full bg-gray-800  flex items-center justify-between" aria-label="Global">
+    <nav class=" w-full   flex items-center justify-between" aria-label="Global">
             <ul class="icon-nav flex items-center gap-4">
                 <li class="relative xl:hidden">
                     <a class="text-xl icon-hover cursor-pointer text-heading"
@@ -17,7 +17,7 @@
            
             <li class="relative">
     
-                @include('layouts.admin.partial.header-components.dd-notification')
+                {{-- @include('layouts.admin.partial.header-components.dd-notification') --}}
             </li>
             </ul>
         <div class="flex items-center gap-4">

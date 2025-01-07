@@ -24,13 +24,18 @@
                 <!-- Main Content -->
                 <div class="content-container">
                     @yield('content')
+                    @include('layouts.admin.partial.footer')
                 </div>
+             
                 <!-- Main Content End -->
 				
             </div>
+      
+     
         </div>
+    
         <!-- End of project -->
-        {{-- @include('layouts.admin.partial.footer') --}}
+   
     </main>
     @include('layouts.admin.partial.scripts')
     <script type="text/javascript" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>

@@ -25,6 +25,18 @@
                         <textarea name="description" id="description" class="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-600 focus:ring-0">{{ old('description', $formGroup->description) }}</textarea>
                     </div>
 
+                    <div class="mb-4">
+                        <label for="academic_year" class="block text-sm font-medium text-gray-700">Tahun Ajaran</label>
+                        <input type="text" name="academic_year" id="academic_year" value="{{ old('academic_year', $formGroup->academic_year) }}" 
+                            class="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-600 focus:ring-0" required>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="category" class="block text-sm font-medium text-gray-700">Kategori</label>
+                        <input type="text" name="category" id="category" value="{{ old('category', $formGroup->category) }}" 
+                            class="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-600 focus:ring-0" required>
+                    </div>
+
                     <div>
                         <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
                             Simpan

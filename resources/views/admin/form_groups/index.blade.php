@@ -52,7 +52,7 @@
                                 <!-- Tombol Kelola Field -->
                                 <a href="{{ route('admin.form_fields.index', $group->id_form) }}"
                                    class="px-3 py-2 text-xs font-medium text-white bg-teal-500 rounded-md hover:bg-red-800 focus:ring-2 focus:outline-none focus:ring-red-300">
-                                    <i class="fa fa-cogs mr-1"></i> Kelola Field
+                                    <i class="fa fa-cogs mr-1"></i> Kelola Kolom
                                 </a>
                             </td>
                         </tr>

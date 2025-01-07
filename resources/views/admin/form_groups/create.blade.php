@@ -26,6 +26,20 @@
                         class="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-600 focus:ring-0"></textarea>
                 </div>
 
+                  <!-- Input Tahun Ajaran Formulir -->
+                  <div class="mb-4">
+                    <label for="acamdemic_year" class="block text-sm font-medium text-gray-700">Tahun Ajaran</label>
+                    <input name="academic_year" id="acamdemic_year" rows="3"
+                        class="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-600 focus:ring-0"></input>
+                </div>
+
+                 <!-- Input Tahun Kategori Formulir -->
+                 <div class="mb-4">
+                    <label for="category" class="block text-sm font-medium text-gray-700">Kategori</label>
+                    <input name="category" id="category" rows="3"
+                        class="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-600 focus:ring-0"></input>
+                </div>
+
                 <!-- Tombol Simpan -->
                 <div>
                     <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">

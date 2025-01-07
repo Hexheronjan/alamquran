@@ -6,7 +6,7 @@
     <div class="card">
         <div class="card-body flex flex-col gap-6">
         <!-- Header -->
-        <h1 class="text-2xl font-bold text-gray-700 mb-4">Tambah Field</h1>
+        <h1 class="text-2xl font-bold text-gray-700 mb-4">Tambah Kolom</h1>
         <div class="card">
             <div class="card-body">
 

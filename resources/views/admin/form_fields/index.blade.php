@@ -11,7 +11,7 @@
             <div class="mb-4 flex justify-between">
                 <a href="{{ route('admin.form_fields.create', $formGroup->id_form) }}" 
                    class="inline-flex items-center bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
-                    <i class="fa fa-plus mr-2"></i> Tambah Field
+                    <i class="fa fa-plus mr-2"></i> Tambah Kolom
                 </a>
                 <a href="{{ route('admin.form_groups.index') }}" 
                    class="inline-flex items-center text-gray-500 hover:text-gray-700">
@@ -26,7 +26,7 @@
                     <thead class="bg-gray-50">
                         <tr>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">#</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Nama Field</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Nama Kolom</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Label</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Jenis</th>
                             <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase">Aksi</th>

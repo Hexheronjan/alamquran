@@ -51,6 +51,13 @@
           </a>
         </li> 
 
+        <li class="sidebar-item">
+          <a class="sidebar-link gap-3 py-2 px-3  rounded-md w-full flex items-center hover:text-blue-600 hover:bg-blue-500" href="{{ route('admin.profile.edit')}}"
+           >
+            <i class="ti ti-file-description  text-xl"></i> <span>Profil</span>
+          </a>
+        </li> 
+
         {{-- <li class="sidebar-item">
           <a class="sidebar-link gap-3 py-2 px-3  rounded-md w-full flex items-center hover:text-blue-600 hover:bg-blue-500" href="@@webRoot/pages/authentication-register.html"
            >
@@ -60,22 +67,19 @@
 
         <li class="text-xs font-bold mb-4 mt-8">
           <i class="ti ti-dots nav-small-cap-icon text-lg hidden text-center"></i>
-          <span>EXTRA</span>
+          <span>---------------------------</span>
         </li>
 
         <li class="sidebar-item">
-          <a class="sidebar-link gap-3 py-2 px-3  rounded-md w-full flex items-center hover:text-blue-600 hover:bg-blue-500" href="@@webRoot/pages/icons.html"
-           >
-            <i class="ti ti-mood-happy  text-xl"></i> <span>Icons</span>
-          </a>
-        </li>
-
-        <li class="sidebar-item">
-          <a class="sidebar-link gap-3 py-2 px-3  rounded-md w-full flex items-center hover:text-blue-600 hover:bg-blue-500" href="@@webRoot/pages/sample-page.html"
-           >
-            <i class="ti ti-aperture  text-xl"></i> <span>Sample Page</span>
-          </a>
-        </li>        
+          <form method="POST" action="{{ route('logout') }}">
+              @csrf
+              <button type="submit" class="sidebar-link gap-3 py-2 px-3 rounded-md w-full flex items-center text-left hover:text-red-600 hover:bg-red-100">
+                  <i class="ti ti-logout text-xl"></i>
+                  <span>Logout</span>
+              </button>
+          </form>
+      </li>
+      
 
       </ul>
     </nav>

@@ -13,7 +13,7 @@
                   
                     <div class="justify-center items-center w-full card lg:flex max-w-md ">
                         <div class=" w-full card-body">
-                                <a href="../" class="py-4 block"><img src="../assets/images/logos/dark-logo.svg" alt="" class="mx-auto"/></a>
+                                <a href="../" class="py-4 block"><img src="../assets/images/logos/icon-logo-ppdb.png" alt="" class="mx-auto"/></a>
                                 <p class="mb-4 text-gray-500 text-sm text-center">Selamat  Datang</p>
                             <!-- form -->
                             <form method="POST" action="{{ route('login') }}">
@@ -38,7 +38,7 @@
                                         <input type="checkbox" class="shrink-0 mt-0.5 border-gray-200 rounded-[4px] text-blue-600 focus:ring-blue-500 " id="hs-default-checkbox" checked>
                                         <label for="hs-default-checkbox" class="text-sm text-gray-600 ms-3">Ingat saya</label>
                                       </div>
-                                        <a href="../" class="text-sm font-medium text-blue-600 hover:text-blue-700">Lupa Password ?</a>
+                                        <a href="{{ route('password.request')}}" class="text-sm font-medium text-blue-600 hover:text-blue-700">Lupa Password ?</a>
                                   </div>
                                     <!-- button -->
                                       <div class="grid my-6">

@@ -23,6 +23,8 @@ class FormGroupController extends Controller
         $request->validate([
             'name' => 'required|unique:form_groups',
             'description' => 'nullable',
+            'acamdemic_year' => 'nullable',
+            'category' => 'nullable',
         ]);
 
         FormGroup::create($request->all());
@@ -43,6 +45,8 @@ class FormGroupController extends Controller
         $request->validate([
             'name' => 'required|unique:form_groups,name,' . $id_form . ',id_form',
             'description' => 'nullable',
+            'acamdemic_year' => 'nullable',
+            'category' => 'nullable',
         ]);
 
         // Ambil data form group dan update

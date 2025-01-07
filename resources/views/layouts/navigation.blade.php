@@ -40,7 +40,7 @@
                     </x-slot>
 
                     <x-slot name="content">
-                        <x-dropdown-link :href="route('profile.edit')">
+                        <x-dropdown-link :href="route('user.profile.edit')">
                             {{ __('Profile') }}
                         </x-dropdown-link>
 
@@ -94,7 +94,7 @@
                     {{ __('Riwayat Pendaftaran') }}
                 </x-responsive-nav-link>
 
-                <x-responsive-nav-link :href="route('profile.edit')">
+                <x-responsive-nav-link :href="route('user.profile.edit')">
                     {{ __('Profile') }}
                 </x-responsive-nav-link>
 

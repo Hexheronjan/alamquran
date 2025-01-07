@@ -14,7 +14,7 @@
                     @method('PUT')
 
                     <div class="mb-4">
-                        <label for="name" class="block text-sm font-medium text-gray-700">Nama Field</label>
+                        <label for="name" class="block text-sm font-medium text-gray-700">Nama Kolom</label>
                         <input type="text" name="name" id="name" value="{{ old('name', $field->name) }}"
                             class="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-600 focus:ring-0" required>
                     </div>

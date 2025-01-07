@@ -6,12 +6,16 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\FormSubmission;
 use App\Models\FormGroup;
+use App\Models\School;
 use Illuminate\Support\Facades\DB;
 
 class FormSubmissionController extends Controller
 {
     public function index()
     {
+        $schools = School::find(1); // Ambil sekolah dengan ID tertentu
+
+        $nama_sekolah = $schools->name ?? 'Sekolah Tidak Ditemukan';
         // Ambil semua form groups
         $formGroups = FormGroup::all();
 
@@ -25,24 +29,43 @@ class FormSubmissionController extends Controller
                 ->count('submission_id');
         }
 
-        return view('admin.form_submission.index', compact('formGroups'));
+        return view('admin.form_submission.index', compact('formGroups', 'schools', 'nama_sekolah'));
     }
     
+    // Menampilkan daftar submission berdasarkan group
     public function submissionsByGroup($formGroupId)
     {
-        // Ambil form group berdasarkan ID
         $formGroup = FormGroup::findOrFail($formGroupId);
 
-        // Ambil semua submissions berdasarkan form group ID
         $submissions = FormSubmission::where('form_group_id', $formGroupId)
-            ->with('user') // Relasi opsional ke user
             ->get()
             ->groupBy('submission_id');
 
-        $status = $submission->status ?? 'pending'; 
-
-        return view('admin.form_submission.by_group', compact('formGroup', 'submissions', 'status'));
+        return view('admin.form_submission.by_group', compact('formGroup', 'submissions'));
     }
+
+    // Menampilkan detail submission berdasarkan SubmissionId
+    public function submissionDetail($submissionId)
+    {
+        $formGroupId = FormSubmission::where('submission_id', $submissionId)->value('form_group_id');
+
+        $formGroups = FormGroup::all();
+
+        $fields = FormSubmission::where('submission_id', $submissionId)
+            ->get()
+            ->filter(function ($field) {
+                return !in_array(strtolower($field->field_name), ['form group id']);
+            })
+            ->map(function ($field) {
+                if (strtolower($field->field_name) === 'foto calon peserta didik') {
+                    $field->value = null;
+                }
+                return $field;
+            });
+
+        return view('admin.form_submission.detail_submission', compact('fields', 'submissionId', 'formGroups', 'formGroupId'));
+    }
+    
 
     public function updateStatus(Request $request, $submissionId)
     {
@@ -58,14 +81,14 @@ class FormSubmissionController extends Controller
         return redirect()->route('admin.form_submission.index')->with('success', 'Status berhasil diperbarui.');
     }
 
-    public function showSubmissionsByGroup($formGroupId)
-    {
-        // Ambil form group beserta submissionsnya
-        $formGroup = FormGroup::with(['submissions' => function ($query) {
-            $query->groupBy('submission_id');
-        }])->findOrFail($formGroupId);
+    // public function showSubmissionsByGroup($formGroupId)
+    // {
+    //     // Ambil form group beserta submissionsnya
+    //     $formGroup = FormGroup::with(['submissions' => function ($query) {
+    //         $query->groupBy('submission_id');
+    //     }])->findOrFail($formGroupId);
 
-        return view('admin.form_submission.by_group', compact('formGroup'));
-    }
+    //     return view('admin.form_submission.by_group', compact('formGroup'));
+    // }
 
 }

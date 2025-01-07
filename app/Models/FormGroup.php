@@ -12,7 +12,7 @@ class FormGroup extends Model
     protected $table = 'form_groups'; // Nama tabel di database
     protected $primaryKey = 'id_form'; // Kolom primary key yang digunakan
 
-    protected $fillable = ['name', 'description'];
+    protected $fillable = ['name', 'description', 'academic_year', 'category',];
 
     public function fields()
     {

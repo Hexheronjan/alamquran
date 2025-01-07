@@ -38,28 +38,31 @@ class SchoolController extends Controller
         return redirect()->route('admin.schools.index');
    }
 
-   public function edit(Schools $schools)
+   public function edit($id_school)
    {   
         $title = "Halaman Edit Data Sekolah"; 
+        $schools = School::findOrFail($id_school); // Ini akan mendapatkan data sekolah dengan id_school yang diberikan
         return view('admin.schools.edit', compact('schools'));
    }
 
-   public function update(Request $request, School $school)
+   public function update(Request $request, $id_school)
    {
-        $request->validate([
-            'name' => 'nullable',
-            'address' => 'nullable',
-            'phone' => 'nullable',
-            'email' => 'nullable|email',
-            'principal_name' => 'nullable|string',
-        ]);
+     $request->validate([
+          'name' => 'nullable',
+          'address' => 'nullable',
+          'phone' => 'nullable',
+          'email' => 'nullable|email',
+          'principal_name' => 'nullable|string',
+     ]);
 
-        School::update($request->all());
+     // Update data sekolah berdasarkan id
+     $school = School::findOrFail($id_school);
+     $school->update($request->all());
 
-        return redirect()->route('admin.schools.index');
+     return redirect()->route('admin.schools.index');
    }
 
-   public function destroy(Schools $schools)
+   public function destroy($id_school)
    {
         $school->delete();
         return redirect()->route('admin.schools.index');

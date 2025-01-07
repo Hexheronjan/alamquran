@@ -10,7 +10,7 @@
             <!-- Selamat Datang -->
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mb-6">
                 <div class="p-6 text-gray-900">
-                    {{ __("You're logged in, :name!", ['name' => Auth::user()->name]) }}
+                    Selamat datang di aplikasi PPDB {{ $schools->name }}
                 </div>
             </div>
 
