@@ -3,7 +3,7 @@
         <a class="relative hs-dropdown-toggle inline-flex  icon-hover text-gray-600" href="#">
             <i class="ti ti-bell-ringing text-xl relative z-[1]"></i>
             <div
-                class="absolute inline-flex items-center justify-center  text-white text-[11px] font-medium  bg-blue-600 w-2 h-2 rounded-full -top-[1px] -right-[6px]">
+                class="absolute inline-flex items-center justify-center text-lg text-white text-[11px] font-medium  bg-blue-600 w-2 h-2 rounded-full -top-[1px] -right-[6px]">
             </div>
         </a>
         <div class="card hs-dropdown-menu transition-[opacity,margin] border border-gray-400 rounded-md duration hs-dropdown-open:opacity-100 opacity-0 mt-2 min-w-max  w-[300px] hidden z-[12]"

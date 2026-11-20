@@ -65,5 +65,14 @@ class FormGroupController extends Controller
         return redirect()->route('admin.form_groups.index')->with('success', 'Form berhasil dihapus!');
     }
 
+    public function toggleStatus($id_form)
+    {
+        $formGroup = FormGroup::findOrFail($id_form);
+        $formGroup->is_active = !$formGroup->is_active;
+        $formGroup->save();
+
+        return redirect()->back()->with('success', 'Status formulir berhasil diperbarui.');
+    }
+
 }
 

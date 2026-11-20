@@ -35,4 +35,9 @@ return [
         ],
     ],
 
+    'onesender' => [
+        'api_key' => env('ONESENDER_API_KEY'),
+        'api_url' => env('ONESENDER_API_URL'),
+    ],
+
 ];

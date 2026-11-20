@@ -26,8 +26,8 @@
     
                     <!-- Email -->
                     <div>
-                        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                        <input type="email" name="email" id="email" value="{{ old('email', $user->email) }}" 
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email (opsional)</label>
+                        <input type="email" name="email" id="email" value="{{ old('email', str_ends_with((string) $user->email, \App\Models\User::PLACEHOLDER_EMAIL_DOMAIN) ? '' : $user->email) }}" 
                             class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
                         @error('email')
                             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>

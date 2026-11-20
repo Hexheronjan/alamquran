@@ -15,6 +15,8 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             UserAndAdminSeeder::class,
+            SchoolSeeder::class,
+            WhatsappTemplateSeeder::class,
         ]);
     }
     

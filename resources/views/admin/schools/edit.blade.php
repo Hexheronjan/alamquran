@@ -5,44 +5,44 @@
     <!-- Card Wrapper -->
     <div class="card">
         <div class="card-body flex flex-col gap-6 shadow-md">
-            <h1 class="text-2xl font-bold text-gray-700">Edit Data Sekolah</h1>
+            <h1 class="text-2xl font-bold text-gray-700">Edit Data Madrasah</h1>
 
-            <!-- Form Create Sekolah -->
+            <!-- Form Create Madrasah -->
             <form action="{{ route('admin.schools.update', $schools->id_school) }}" method="POST" class="space-y-4">
                 @csrf
                 @method('PUT')
             
-                <!-- Nama Sekolah -->
+                <!-- Nama Madrasah -->
                 <div class="mb-4"> 
-                    <label for="name" class="block text-sm font-medium text-gray-700">Nama Sekolah</label>
+                    <label for="name" class="block text-sm font-medium text-gray-700">Nama Madrasah</label>
                     <input type="text" name="name" id="name" value="{{ old('name', $schools->name) }}" required
                            class="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-600 focus:ring-0">
                 </div>
             
-                <!-- Alamat Sekolah -->
+                <!-- Alamat Madrasah -->
                 <div class="mb-4">
-                    <label for="address" class="block text-sm font-medium text-gray-700">Alamat Sekolah</label>
+                    <label for="address" class="block text-sm font-medium text-gray-700">Alamat Madrasah</label>
                     <textarea name="address" id="address" rows="3" required
                               class="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-600 focus:ring-0">{{ old('address', $schools->address) }}</textarea>
                 </div>
             
-                <!-- Telepon Sekolah -->
+                <!-- Telepon Madrasah -->
                 <div class="mb-4">
-                    <label for="phone" class="block text-sm font-medium text-gray-700">Telepon Sekolah</label>
+                    <label for="phone" class="block text-sm font-medium text-gray-700">Telepon Madrasah</label>
                     <input type="text" name="phone" id="phone" value="{{ old('phone', $schools->phone) }}" required
                            class="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-600 focus:ring-0">
                 </div>
             
-                <!-- Email Sekolah -->
+                <!-- Email Madrasah -->
                 <div class="mb-4">
-                    <label for="email" class="block text-sm font-medium text-gray-700">Email Sekolah</label>
+                    <label for="email" class="block text-sm font-medium text-gray-700">Email Madrasah</label>
                     <input type="email" name="email" id="email" value="{{ old('email', $schools->email) }}" required
                            class="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-600 focus:ring-0">
                 </div>
             
-                <!-- Kepala Sekolah -->
+                <!-- Kepala Madrasah -->
                 <div class="mb-4">
-                    <label for="principal_name" class="block text-sm font-medium text-gray-700">Kepala Sekolah</label>
+                    <label for="principal_name" class="block text-sm font-medium text-gray-700">Kepala Madrasah</label>
                     <input type="text" name="principal_name" id="principal_name" value="{{ old('principal_name', $schools->principal_name) }}" required
                            class="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-600 focus:ring-0">
                 </div>

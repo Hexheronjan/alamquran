@@ -11,7 +11,14 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        //
+        $middleware->validateCsrfTokens(except: [
+            'api/webhook/*',
+            'webhook/*',
+        ]);
+        $middleware->alias([
+            'admin.permission' => \App\Http\Middleware\AdminPermissionMiddleware::class,
+            'must.change.password' => \App\Http\Middleware\MustChangePasswordMiddleware::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

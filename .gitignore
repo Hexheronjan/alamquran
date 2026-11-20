@@ -21,3 +21,9 @@ yarn-error.log
 /.nova
 /.vscode
 /.zed
+*.zip
+*.sql
+* - Copy/
+* - Copy.*
+*- Copy/
+*- Copy.*

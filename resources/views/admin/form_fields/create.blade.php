@@ -16,23 +16,23 @@
 
                     <!-- Nama Field -->
                     <div>
-                        <label for="name" class="mb-2 block text-sm font-medium text-gray-700">Nama</label>
+                        <label for="name" class="mb-2 block text-sm font-medium text-gray-700">Nama Kolom</label>
                         <input type="text" id="name" name="name" 
                             class="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-600 focus:ring-0 " 
-                            placeholder="Nama field" required>
+                            placeholder="Nama kolom" required>
                     </div>
 
                     <!-- Label -->
                     <div>
-                        <label for="label" class="mb-2 block text-sm font-medium text-gray-700">Label</label>
+                        <label for="label" class="mb-2 block text-sm font-medium text-gray-700">Label Kolom</label>
                         <input type="text" id="label" name="label" 
                             class="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-600 focus:ring-0 " 
-                            placeholder="Label field" required>
+                            placeholder="Label kolom" required>
                     </div>
 
                     <!-- Jenis Input -->
                     <div>
-                        <label for="type" class="mb-2 block text-sm font-medium text-gray-700">Jenis Input</label>
+                        <label for="type" class="mb-2 block text-sm font-medium text-gray-700">Tipe Input</label>
                         <select id="type" name="type" 
                                 class="py-3 px-4 pe-9 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 disabled:pointer-events-none disabled:shadow-xl" required>
                             <option value="text">Text</option>
@@ -52,7 +52,7 @@
                         <label for="placeholder" class="mb-2 block text-sm font-medium text-gray-700">Placeholder</label>
                         <input type="text" id="placeholder" name="placeholder" 
                             class="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-600 focus:ring-0 " 
-                            placeholder="Placeholder field">
+                            placeholder="Placeholder kolom">
                     </div>
 
                     <!-- Opsi (jika Select) -->
@@ -60,7 +60,8 @@
                         <label for="options" class="mb-2 block text-sm font-medium text-gray-700">Opsi (jika Select)</label>
                         <input type="text" id="options" name="options" 
                             class="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-600 focus:ring-0 " 
-                            placeholder="Pisahkan dengan koma">
+                            placeholder="Contoh: Opsi 1, Opsi 2, Opsi 3">
+                            <p class="text-xs text-gray-500 mt-1">Pisahkan dengan koma (,) untuk beberapa opsi.</p>
                     </div>
 
                     <!-- Wajib diisi? -->
@@ -82,6 +83,7 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 
 @endsection

@@ -8,6 +8,7 @@ use App\Models\FormSubmission;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Models\School;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class FormController extends Controller
 {
@@ -64,12 +65,11 @@ class FormController extends Controller
     
     public function userHistory()
     {
-        // Ambil submission_id unik milik user yang sedang login
+        // Ambil submission_id unik milik user yang sedang login (form lama)
         $userSubmissions = FormSubmission::where('user_id', auth()->id())
             ->get()
-            ->groupBy('submission_id') // Mengelompokkan berdasarkan ID pendaftaran
+            ->groupBy('submission_id')
             ->map(function ($fields) {
-                // Ambil hanya informasi penting: status dan ID grup
                 return [
                     'status' => $fields->first()->status ?? 'pending',
                     'registration_date' => $fields->first()->registration_date,
@@ -77,7 +77,13 @@ class FormController extends Controller
                 ];
             });
 
-        return view('user.form.history', compact('userSubmissions'));
+        // Ambil pendaftaran santri baru milik user yang sedang login
+        $santriRegistrations = \App\Models\Santri::with('correctionNoteOpen')
+            ->where('user_id', auth()->id())
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        return view('user.form.history', compact('userSubmissions', 'santriRegistrations'));
     }
     
     public function detail($submissionId)
@@ -98,8 +104,8 @@ class FormController extends Controller
                 return !in_array(strtolower($field->field_name), ['form group id']);
             })
             ->map(function ($field) {
-                // Kosongkan value untuk 'foto calon peserta didik'
-                if (strtolower($field->field_name) === 'foto calon peserta didik') {
+                // Jika field ini memiliki file_path, maka anggap itu field file dan kosongkan value-nya
+                if (!empty($field->file_path)) {
                     $field->value = null;
                 }
                 return $field;
@@ -110,5 +116,36 @@ class FormController extends Controller
         $registration_date = $fields->first()->registration_date ?? null;
     
         return view('user.form.detail_history', compact('submissionId', 'fields', 'status', 'registration_date', 'schools', 'form'));
+    }
+
+    public function downloadPdf($submissionId)
+    {
+        $schools = School::find(1);
+        $formGroupId = FormSubmission::where('submission_id', $submissionId)->value('form_group_id');
+        $form = FormGroup::findOrFail($formGroupId);
+
+        $fields = FormSubmission::where('submission_id', $submissionId)
+            ->get()
+            ->filter(fn($field) => strtolower($field->field_name) !== 'form group id')
+            ->map(function ($field) {
+                if (!empty($field->file_path)) {
+                    $field->value = null;
+                }
+                return $field;
+            });
+
+        $status = $fields->first()->status ?? 'pending';
+        $registration_date = $fields->first()->registration_date ?? null;
+
+        $pdf = Pdf::loadView('user.form.pdf', [
+            'submissionId' => $submissionId,
+            'fields' => $fields,
+            'status' => $status,
+            'registration_date' => $registration_date,
+            'schools' => $schools,
+            'form' => $form,
+        ]);
+
+        return $pdf->download("bukti-pendaftaran-{$submissionId}.pdf");
     }
 }

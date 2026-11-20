@@ -20,7 +20,7 @@ class SchoolController extends Controller
    {
         $title = "Tambah Data Sekolah";
 
-        return view('admin.schools.create', compact('title'));
+        return redirect()->back();
    }
 
    public function store(Request $request)

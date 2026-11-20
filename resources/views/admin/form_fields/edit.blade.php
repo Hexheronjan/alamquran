@@ -48,7 +48,9 @@
 
                     <div class="mb-4">
                         <label for="options" class="block text-sm font-medium text-gray-700">Options (untuk Select, Checkbox, Radio)</label>
-                        <textarea name="options" id="options" class="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-600 focus:ring-0">{{ old('options', $field->options) }}</textarea>
+                        <input type="text" name="options" id="options" value="{{ old('options', $field->options) }}"
+                            class="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-600 focus:ring-0">
+                        <p class="text-xs text-gray-500 mt-1">Pisahkan dengan koma (,) untuk beberapa opsi.</p>
                     </div>
 
                     <div class="mb-4">

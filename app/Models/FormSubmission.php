@@ -13,7 +13,7 @@ class FormSubmission extends Model
         'user_id',
         'status',
         'file_path',
-        'form_group_id', // Tambahkan kolom baru
+        'form_group_id',
         'registration_date'
     ];
 

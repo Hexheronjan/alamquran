@@ -11,7 +11,5 @@
   rel="stylesheet" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
-<!-- Core Css -->
-{{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
-
 <link rel="stylesheet" href="{{ asset('assets/css/theme.css')}}" />
+@vite(['resources/css/app.css', 'resources/js/app.js'])

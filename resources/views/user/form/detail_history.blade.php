@@ -11,19 +11,20 @@
                 
                 <!-- Header -->
                 <div class="bg-blue-600 text-white text-center py-4 rounded-t-md">
-                    <h1 class="text-3xl font-bold">Hasil Seleksi PPDB</h1>
+                    <h1 class="text-3xl font-bold">Hasil Seleksi PSB</h1>
                 </div>
                 
                 <!-- Sub-header -->
                 <div class="bg-gray-100 text-center py-3 border-b">
                     <p class="text-lg font-medium text-gray-700">
-                        Berdasarkan Seleksi Penerimaan Peserta Didik Baru Sistem {{ $form->category}} {{ $schools->name }} periode {{ $form->academic_year}}, diputuskan bahwa:
+                        Berdasarkan Seleksi Penerimaan Santri Baru (PSB) Sistem {{ $form->category}} {{ $schools->name }} periode {{ $form->academic_year}}, diputuskan bahwa:
                     </p>
                 </div>
     
                 <!-- Detail Pendaftaran dalam Tabel -->
                 <div class="p-6 text-gray-900 mb-5">
-                    <table class="w-full border-collapse border border-gray-300 text-sm">
+                    <div class="overflow-x-auto">
+                    <table class="w-full border-collapse border border-gray-300 text-sm" style="table-layout: fixed; min-width: 0;">
                         <thead>
                             <tr class="bg-gray-200 text-left">
                                 <th class="border border-gray-300 px-4 py-2 w-1/4">Informasi</th>
@@ -74,6 +75,7 @@
                             @endforeach
                         </tbody>
                     </table>
+                    </div>
 
                     <!-- Konten Tambahan Jika Status Diterima -->
                     @if ($status == 'diterima')
@@ -93,6 +95,16 @@
                         </div>
                     @endif
     
+                    @if (in_array($status, ['diterima', 'ditolak']))
+                        <div class="mt-6 text-right">
+                            <a href="{{ route('user.form.download_pdf', $submissionId) }}" 
+                            target="_blank"
+                            class="inline-block px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-800">
+                                Cetak Bukti Pendaftaran (PDF)
+                            </a>
+                        </div>
+                    @endif
+
                     <!-- Tombol Kembali -->
                     <div class="mt-6 text-right">
                         <a href="{{ route('user.form.history') }}" 
