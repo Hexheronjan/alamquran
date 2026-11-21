@@ -1969,20 +1969,22 @@
 <!-- Modal Pengaturan Rekening & SPP Santri (+ Fitur Tambah Add-on) -->
 <div id="santriRekeningModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-3 sm:p-4 overflow-y-auto"
      style="z-index: 99999 !important; background-color: rgba(15, 23, 42, 0.7) !important; backdrop-filter: blur(4px);">
-    <div class="bg-white rounded-2xl max-w-md w-full shadow-2xl overflow-hidden my-auto max-h-[92vh] flex flex-col animate-in fade-in">
-        <div class="px-5 py-3.5 border-b border-gray-100 flex items-center justify-between text-white shrink-0" style="background-color: #0d9488 !important;">
+    <div class="bg-white rounded-2xl max-w-md w-full shadow-2xl overflow-hidden my-auto animate-in fade-in"
+         style="max-height: 88vh !important; display: flex !important; flex-direction: column !important; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.45) !important;">
+        <div class="px-5 py-3.5 border-b border-gray-100 flex items-center justify-between text-white shrink-0" style="background-color: #0d9488 !important; flex-shrink: 0 !important;">
             <div>
-                <h3 class="text-sm font-bold flex items-center gap-1.5">
+                <h3 class="text-sm font-bold flex items-center gap-1.5 text-white">
                     <i class="ti ti-credit-card"></i> Rekening, Tarif SPP & Add-on Santri
                 </h3>
                 <div class="text-xs text-teal-100 font-semibold mt-0.5" id="modalSantriRekeningNama">-</div>
             </div>
-            <button type="button" onclick="closeSantriRekeningModal()" class="text-white/80 hover:text-white cursor-pointer">
+            <button type="button" onclick="closeSantriRekeningModal()" class="text-white/80 hover:text-white cursor-pointer p-1">
                 <i class="ti ti-x text-xl"></i>
             </button>
         </div>
 
-        <form id="formSantriRekening" method="POST" class="overflow-y-auto p-5 space-y-3.5 text-xs flex-1">
+        <form id="formSantriRekening" method="POST" class="p-5 space-y-3.5 text-xs"
+              style="overflow-y: auto !important; flex: 1 1 auto !important; max-height: calc(88vh - 75px) !important;">
             @csrf
 
             <!-- Pilihan Beasiswa Full -->
